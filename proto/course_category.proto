@@ -23,10 +23,15 @@ message CategoryGetRequest {
     string id = 1;
 }
 
+message DeleteCategoryRequest {
+    string id = 1;
+}
+
 service CategoryService {
     rpc CreateCategory(CreateCategoryRequest) returns (Category) {}
     rpc CreateCategoryStream(stream CreateCategoryRequest) returns (CategoryList) {}
     rpc CreateCategoryStreamBidirectional(stream CreateCategoryRequest) returns (stream Category) {}
     rpc ListCategories(blank) returns (CategoryList) {}
     rpc GetCategory(CategoryGetRequest) returns (Category) {}
+    rpc DeleteCategory(DeleteCategoryRequest) returns (blank) {}
 }

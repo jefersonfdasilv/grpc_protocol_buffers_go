@@ -68,3 +68,11 @@ func (c *Category) Find(id string) (Category, error) {
 	}
 	return Category{ID: id, Name: name, Description: description}, nil
 }
+
+func (c *Category) Delete(id string) error {
+	_, err := c.db.Exec("DELETE FROM categories WHERE id = $1", id)
+	if err != nil {
+		return err
+	}
+	return nil
+}
